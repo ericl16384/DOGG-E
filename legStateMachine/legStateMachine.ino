@@ -1,17 +1,11 @@
-void setup() {
-  // put your setup code here, to run once:
 
-}
-
-void loop() {
-  // put your main code here, to run repeatedly:
-
-}
 
 #include <Servo.h>
 
 #define servoShoulderPin 5
 #define servoKneePin 6
+
+//#define servoPowerPin 30
 
 
 
@@ -82,11 +76,15 @@ void setup() {
 
   servoShoulder.attach(servoShoulderPin);
   servoKnee.attach(servoKneePin);
+  
+//  pinMode(servoPowerPin, OUTPUT);
 
 
   servoShoulder.write(0);
   servoKnee.write(180);
   delay(1000);
+
+//  digitalWrite(servoPowerPin, LOW);
   
   servoShoulder.write(180);
   servoKnee.write(0);
@@ -94,6 +92,15 @@ void setup() {
 
 //   DEBUG
 //  delay(1000000);
+
+//
+//
+//  while(true) {
+//    digitalWrite(servoPowerPin, HIGH);
+//    delay(2);
+//    digitalWrite(servoPowerPin, LOW);
+//    delay(10);
+//  }
 
 
 
