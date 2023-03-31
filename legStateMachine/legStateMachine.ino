@@ -71,8 +71,6 @@ bool updateAngles() {
 
 void setup() {
   Serial.begin(9600);
-  
-  // put your setup code here, to run once:
 
   servoShoulder.attach(servoShoulderPin);
   servoKnee.attach(servoKneePin);
@@ -92,28 +90,40 @@ void setup() {
 
 //   DEBUG
 //  delay(1000000);
-
-//
-//
-//  while(true) {
-//    digitalWrite(servoPowerPin, HIGH);
-//    delay(2);
-//    digitalWrite(servoPowerPin, LOW);
-//    delay(10);
-//  }
-
-
-
-//  Serial.println(toDegrees(atan2(0, 0)));
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
 
-  x += 0.2;
-//  y -= 0.5;
+#define STATE_STOWED -1
+#define STATE_LIFTING 0
+#define STATE_NO_CONTACT 1
+#define STATE_GROUND_CONTACT 2
+#define STATE_TO_GROUND 3
+#define STATE_FROM_GROUND 4
+
+int state = STATE_STOWED;
+
+
+
+void loop() {
+//  x += 0.2;
+////  y -= 0.5;
+
+  if(state == STATE_STOWED) {
+    state = STATE_LIFTING;
+  }
+
 
   if(updateAngles()) { updateServos(); }
+
+
+
+
+
+
+
+
+
+
 
 //  Serial.println(angle1);
 //  Serial.println(distance);
